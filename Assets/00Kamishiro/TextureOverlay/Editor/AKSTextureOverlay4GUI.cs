@@ -23,7 +23,7 @@ public class AKSTextureOverlay4GUI : ShaderGUI
     }
     public override void OnGUI(MaterialEditor materialEditor, MaterialProperty[] properties)
     {
-        EditorGUILayout.LabelField("TextureOverlay4_v1.0 by AoiKamishiro/神城葵", EditorStyles.boldLabel);
+        EditorGUILayout.LabelField("TextureOverlay4_v1.1 by AoiKamishiro/神城葵", EditorStyles.boldLabel);
         EditorGUILayout.Space();
         DrawBlendMode(properties);
         EditorGUILayout.Space();
