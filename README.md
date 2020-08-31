@@ -19,4 +19,6 @@
 <a>Twitter : @aoi3192</a>
 <br/>
 <a>VRC : 神城 葵[Aoi_JPN]</a>
-<a>Booth : https://kamishirolab.booth.pm/</a>
+<br>
+<a>Booth : </a>
+<a href="https://kamishirolab.booth.pm/">https://kamishirolab.booth.pm/</a>
