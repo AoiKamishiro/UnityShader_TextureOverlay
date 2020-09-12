@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2020 AoiKamishiro/ê_èÈà®
+ * Copyright (c) 2020 AoiKamishiro
  * 
  * This code is provided under the MIT license.
  * 
