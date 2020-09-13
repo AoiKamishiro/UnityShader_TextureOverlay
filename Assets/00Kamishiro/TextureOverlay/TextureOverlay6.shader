@@ -61,5 +61,5 @@ Shader "Kamishiro/TextureOverlay/TextureOverlay6"
         }
     }
     Fallback "Unlit/Transparent"
-    CustomEditor "AKSTextureOverlay6GUI"
+    CustomEditor "AKSTextureOverlay.AKSTextureOverlay6GUI"
 }

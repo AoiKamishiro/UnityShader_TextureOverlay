@@ -51,5 +51,5 @@ Shader "Kamishiro/TextureOverlay/TextureOverlay"
         }
     }
     Fallback "Unlit/Transparent"
-    CustomEditor "AKSTextureOverlayGUI"
+    CustomEditor "AKSTextureOverlay.AKSTextureOverlayGUI"
 }
