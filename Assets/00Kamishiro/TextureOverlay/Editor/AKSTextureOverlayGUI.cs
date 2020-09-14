@@ -74,6 +74,7 @@ namespace AKSTextureOverlay
             EditorGUI.BeginChangeCheck();
             {
                 BlendModePopup();
+                AKSUIHelper.ShurikenHeader("Main");
                 EditorGUILayout.Space();
                 EditorGUILayout.LabelField("Textures", EditorStyles.boldLabel);
                 m_MaterialEditor.TexturePropertyWithHDRColor(new GUIContent(mainTex.displayName), mainTex, mainColor, true);
