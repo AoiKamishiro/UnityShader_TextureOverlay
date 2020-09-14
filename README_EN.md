@@ -3,7 +3,7 @@
 ## *You must delete the previous version before importing.  
 ### About Shaders.
 This is a so-called field-of-view jack shader, which allows you to do targeted field-of-view jacking in the VRC for VR cameras and desktops only.  
-* [Booth Page](https://kamishirolab.booth.pm/items/2345700)
+* [Booth Page](https://kamishirolab.booth.pm/items/2303512)
 ### Assumptions.
 Unity 2018.4.20f1
 ### Use.
