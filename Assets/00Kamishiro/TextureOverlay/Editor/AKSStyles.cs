@@ -27,7 +27,7 @@ namespace AKSTextureOverlay
         public const string author = "Author: AoiKamishiro / 神城アオイ";
         public const string linkRelease = "https://github.com/AoiKamishiro/UnityShader_TextureOverlay/releases";
         public const string linkReadme = "https://github.com/AoiKamishiro/UnityShader_TextureOverlay";
-        public const string linkDescription = "https://github.com/AoiKamishiro/UnityShader_TextureOverlay";
+        public const string linkDescription = "https://github.com/AoiKamishiro/UnityShader_TextureOverlay/blob/master/Description.md";
         public const string renderingMode = "Rendering Mode";
 
     }
