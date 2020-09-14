@@ -4,7 +4,7 @@
 * Cutout - 透過・不透過かが明確なオブジェクトの描画用。切り抜き表現向きです。
 * Transparent - 透過オブジェクトの描画用。反射などの映り込みは透過しません。
 ## Main
-* Textureas - 視界ジャックで表示するテクスチャを指定します。
+* Textures - 視界ジャックで表示するテクスチャを指定します。
     * Main Texture - 一枚目のテクスチャを指定します。
 * Overlay Target
     * Player View (VR) - VRプレイヤーの視界をジャックします。
