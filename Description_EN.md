@@ -9,7 +9,7 @@
 * Overlay Target - Specifies the first texture.
     * Player View (VR) - hijacks the view of the VR player.
     * Player View (VR) - Hijacks the desktop player's view.
-    * Screen Shot (VR) - Jack the screenshot.
+    * Screen Shot - Jack the screenshot.
     * Other - Jack other Unity cameras.
 * Rendering Options - set general rendering options.
     * ZTest - ZTest settings.
