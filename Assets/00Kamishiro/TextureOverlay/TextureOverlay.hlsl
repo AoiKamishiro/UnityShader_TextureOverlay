@@ -32,12 +32,26 @@ bool _EnableOther;
 
 bool doOverlay()
 {
-    if (isOrthographic() || isInMirror()) return 0;
-    if (_EnableVR && isVRView()) return 1;
-    if (_EnableDesktop && isPlayerView()) return 1;
-    if (_EnableSS && isSS()) return 1;
-    if (_EnableOther) return 1;
-    return 0;
+    if(isOrthographic() || isInMirror())
+    {
+        return 0;
+    }
+    else if(isVRView())
+    {
+        return _EnableVR ? 1: 0;
+    }
+    else if(isPlayerView())
+    {
+        return _EnableDesktop?1: 0;
+    }
+    else if(isSS())
+    {
+        return _EnableSS?1: 0;
+    }
+    else
+    {
+        return _EnableOther?1: 0;
+    }
 }
 
 v2f vert(appdata v)
