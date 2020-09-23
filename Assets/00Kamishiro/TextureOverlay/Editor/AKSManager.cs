@@ -104,7 +104,10 @@ namespace AKSTextureOverlay
             EditorGUILayout.LabelField(AKSStyles.remoteVer + EditorUserSettings.GetConfigValue("akstextureoverlay_version_remote"));
             if (bool.TryParse(EditorUserSettings.GetConfigValue("akstextureoverlay_need_update"), out bool needupdate) && needupdate)
             {
+                //EditorGUILayout.BeginHorizontal();
                 if (GUILayout.Button(AKSStyles.btnUpdate)) { AKSUIHelper.OpenLink(AKSStyles.linkRelease); }
+                if (GUILayout.Button(AKSStyles.btnBooth)) { AKSUIHelper.OpenLink(AKSStyles.linkBooth); }
+                //EditorGUILayout.EndHorizontal();
             }
         }
         public class GitJson
