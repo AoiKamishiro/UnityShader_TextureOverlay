@@ -18,7 +18,7 @@ namespace AKSTextureOverlay
     public class AKSManager : MonoBehaviour
     {
         public static int versionInt;
-        private const string version = "v1.21";
+        private const string version = "v1.22";
         private const string url = "https://api.github.com/repos/AoiKamishiro/UnityShader_TextureOverlay/releases/latest";
         private static UnityWebRequest www;
 
