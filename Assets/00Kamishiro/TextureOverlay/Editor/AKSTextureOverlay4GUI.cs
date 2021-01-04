@@ -12,14 +12,17 @@
 using System;
 using UnityEditor;
 using UnityEngine;
-namespace AKSTextureOverlay {
-    public class AKSTextureOverlay4GUI : ShaderGUI {
-        public static readonly string[] blendNames = Enum.GetNames (typeof (BlendMode));
+namespace Kamishiro.UnityShader.TextureOverlay
+{
+    public class AKSTextureOverlay4GUI : ShaderGUI
+    {
+        public static readonly string[] blendNames = Enum.GetNames(typeof(BlendMode));
         private bool __alphaOption = false;
         private bool m_FirstTimeApply = true;
         private MaterialEditor m_MaterialEditor;
 
-        private enum BlendMode {
+        private enum BlendMode
+        {
             Opaque,
             Cutout,
             Transparent,
@@ -45,138 +48,155 @@ namespace AKSTextureOverlay {
         private MaterialProperty srcFactor;
         private MaterialProperty dstFactor;
         #endregion
-        private void FindProperties (MaterialProperty[] props) {
-            blendMode = FindProperty ("_BlendMode", props);
-            mainTex = FindProperty ("_MainTex", props);
-            tex2 = FindProperty ("_Tex2", props);
-            tex3 = FindProperty ("_Tex3", props);
-            tex4 = FindProperty ("_Tex4", props);
-            mainColor = FindProperty ("_MainColor", props);
-            color2 = FindProperty ("_Color2", props);
-            color3 = FindProperty ("_Color3", props);
-            color4 = FindProperty ("_Color4", props);
-            enableVR = FindProperty ("_EnableVR", props);
-            enableDesktop = FindProperty ("_EnableDesktop", props);
-            enableSS = FindProperty ("_EnableSS", props);
-            enableOther = FindProperty ("_EnableOther", props);
-            ztest = FindProperty ("_ZTest", props);
-            zwrite = FindProperty ("_ZWrite", props);
-            srcFactor = FindProperty ("_SrcFactor", props);
-            dstFactor = FindProperty ("_DstFactor", props);
-            cutoff = FindProperty ("_Cutoff", props);
+        private void FindProperties(MaterialProperty[] props)
+        {
+            blendMode = FindProperty("_BlendMode", props);
+            mainTex = FindProperty("_MainTex", props);
+            tex2 = FindProperty("_Tex2", props);
+            tex3 = FindProperty("_Tex3", props);
+            tex4 = FindProperty("_Tex4", props);
+            mainColor = FindProperty("_MainColor", props);
+            color2 = FindProperty("_Color2", props);
+            color3 = FindProperty("_Color3", props);
+            color4 = FindProperty("_Color4", props);
+            enableVR = FindProperty("_EnableVR", props);
+            enableDesktop = FindProperty("_EnableDesktop", props);
+            enableSS = FindProperty("_EnableSS", props);
+            enableOther = FindProperty("_EnableOther", props);
+            ztest = FindProperty("_ZTest", props);
+            zwrite = FindProperty("_ZWrite", props);
+            srcFactor = FindProperty("_SrcFactor", props);
+            dstFactor = FindProperty("_DstFactor", props);
+            cutoff = FindProperty("_Cutoff", props);
         }
-        public override void OnGUI (MaterialEditor materialEditor, MaterialProperty[] properties) {
-            FindProperties (properties);
+        public override void OnGUI(MaterialEditor materialEditor, MaterialProperty[] properties)
+        {
+            FindProperties(properties);
             m_MaterialEditor = materialEditor;
             Material material = materialEditor.target as Material;
-            if (m_FirstTimeApply) {
-                MaterialChanged (material);
+            if (m_FirstTimeApply)
+            {
+                MaterialChanged(material);
                 m_FirstTimeApply = false;
             }
-            ShaderPropertiesGUI (material);
+            ShaderPropertiesGUI(material);
         }
-        private void ShaderPropertiesGUI (Material material) {
-            EditorGUI.BeginChangeCheck (); {
-                BlendModePopup ();
-                AKSUIHelper.ShurikenHeader ("Main");
-                EditorGUILayout.Space ();
-                EditorGUILayout.LabelField ("Textures", EditorStyles.boldLabel);
-                m_MaterialEditor.TexturePropertyWithHDRColor (new GUIContent (mainTex.displayName), mainTex, mainColor, true);
-                m_MaterialEditor.TexturePropertyWithHDRColor (new GUIContent (tex2.displayName), tex2, color2, true);
-                m_MaterialEditor.TexturePropertyWithHDRColor (new GUIContent (tex3.displayName), tex3, color3, true);
-                m_MaterialEditor.TexturePropertyWithHDRColor (new GUIContent (tex4.displayName), tex4, color4, true);
-                EditorGUILayout.Space ();
-                EditorGUILayout.LabelField ("Overlay Target", EditorStyles.boldLabel);
-                m_MaterialEditor.ShaderProperty (enableVR, enableVR.displayName);
-                m_MaterialEditor.ShaderProperty (enableDesktop, enableDesktop.displayName);
-                m_MaterialEditor.ShaderProperty (enableSS, enableSS.displayName);
-                m_MaterialEditor.ShaderProperty (enableOther, enableOther.displayName);
-                if (__alphaOption) {
-                    EditorGUILayout.Space ();
-                    EditorGUILayout.LabelField ("Alpha Option", EditorStyles.boldLabel);
-                    m_MaterialEditor.ShaderProperty (cutoff, cutoff.displayName);
+        private void ShaderPropertiesGUI(Material material)
+        {
+            EditorGUI.BeginChangeCheck();
+            {
+                BlendModePopup();
+                AKSUIHelper.ShurikenHeader("Main");
+                EditorGUILayout.Space();
+                EditorGUILayout.LabelField("Textures", EditorStyles.boldLabel);
+                m_MaterialEditor.TexturePropertyWithHDRColor(new GUIContent(mainTex.displayName), mainTex, mainColor, true);
+                m_MaterialEditor.TexturePropertyWithHDRColor(new GUIContent(tex2.displayName), tex2, color2, true);
+                m_MaterialEditor.TexturePropertyWithHDRColor(new GUIContent(tex3.displayName), tex3, color3, true);
+                m_MaterialEditor.TexturePropertyWithHDRColor(new GUIContent(tex4.displayName), tex4, color4, true);
+                EditorGUILayout.Space();
+                EditorGUILayout.LabelField("Overlay Target", EditorStyles.boldLabel);
+                m_MaterialEditor.ShaderProperty(enableVR, enableVR.displayName);
+                m_MaterialEditor.ShaderProperty(enableDesktop, enableDesktop.displayName);
+                m_MaterialEditor.ShaderProperty(enableSS, enableSS.displayName);
+                m_MaterialEditor.ShaderProperty(enableOther, enableOther.displayName);
+                if (__alphaOption)
+                {
+                    EditorGUILayout.Space();
+                    EditorGUILayout.LabelField("Alpha Option", EditorStyles.boldLabel);
+                    m_MaterialEditor.ShaderProperty(cutoff, cutoff.displayName);
                 }
-                EditorGUILayout.Space ();
-                EditorGUILayout.LabelField ("Rendering Option", EditorStyles.boldLabel);
-                m_MaterialEditor.ShaderProperty (ztest, ztest.displayName);
+                EditorGUILayout.Space();
+                EditorGUILayout.LabelField("Rendering Option", EditorStyles.boldLabel);
+                m_MaterialEditor.ShaderProperty(ztest, ztest.displayName);
                 //m_MaterialEditor.ShaderProperty(zwrite, zwrite.displayName);
                 //m_MaterialEditor.ShaderProperty(srcFactor, srcFactor.displayName);
                 //m_MaterialEditor.ShaderProperty(dstFactor, dstFactor.displayName);
-                m_MaterialEditor.RenderQueueField ();
+                m_MaterialEditor.RenderQueueField();
             }
-            if (EditorGUI.EndChangeCheck ()) {
-                MaterialChanged (material);
+            if (EditorGUI.EndChangeCheck())
+            {
+                MaterialChanged(material);
             }
-            AKSUIHelper.ShurikenHeader (AKSStyles.nameAKTextureOverlay4);
-            EditorGUILayout.LabelField (AKSStyles.author);
-            AKSManager.DisplayVersion ();
-            EditorGUILayout.Space ();
-            EditorGUILayout.BeginHorizontal ();
-            if (GUILayout.Button (AKSStyles.btnReadme)) { AKSUIHelper.OpenLink (AKSStyles.linkReadme); }
-            if (GUILayout.Button (AKSStyles.btnDescription)) { AKSUIHelper.OpenLink (AKSStyles.linkDescription); }
-            EditorGUILayout.EndHorizontal ();
+            AKSUIHelper.ShurikenHeader(AKSStyles.nameAKTextureOverlay4);
+            EditorGUILayout.LabelField(AKSStyles.author);
+            AKSManager.DisplayVersion();
+            EditorGUILayout.Space();
+            EditorGUILayout.BeginHorizontal();
+            if (GUILayout.Button(AKSStyles.btnReadme)) { AKSUIHelper.OpenLink(AKSStyles.linkReadme); }
+            if (GUILayout.Button(AKSStyles.btnDescription)) { AKSUIHelper.OpenLink(AKSStyles.linkDescription); }
+            EditorGUILayout.EndHorizontal();
         }
-        public override void AssignNewShaderToMaterial (Material material, Shader oldShader, Shader newShader) {
-            base.AssignNewShaderToMaterial (material, oldShader, newShader);
-            MaterialChanged (material);
+        public override void AssignNewShaderToMaterial(Material material, Shader oldShader, Shader newShader)
+        {
+            base.AssignNewShaderToMaterial(material, oldShader, newShader);
+            MaterialChanged(material);
         }
-        private void BlendModePopup () {
+        private void BlendModePopup()
+        {
             EditorGUI.showMixedValue = blendMode.hasMixedValue;
-            BlendMode mode = (BlendMode) blendMode.floatValue;
+            BlendMode mode = (BlendMode)blendMode.floatValue;
 
-            EditorGUI.BeginChangeCheck ();
-            mode = (BlendMode) EditorGUILayout.Popup (AKSStyles.renderingMode, (int) mode, blendNames);
-            if (EditorGUI.EndChangeCheck ()) {
-                m_MaterialEditor.RegisterPropertyChangeUndo ("Rendering Mode");
-                blendMode.floatValue = (float) mode;
-                foreach (UnityEngine.Object obj in blendMode.targets) {
-                    MaterialChanged ((Material) obj);
+            EditorGUI.BeginChangeCheck();
+            mode = (BlendMode)EditorGUILayout.Popup(AKSStyles.renderingMode, (int)mode, blendNames);
+            if (EditorGUI.EndChangeCheck())
+            {
+                m_MaterialEditor.RegisterPropertyChangeUndo("Rendering Mode");
+                blendMode.floatValue = (float)mode;
+                foreach (UnityEngine.Object obj in blendMode.targets)
+                {
+                    MaterialChanged((Material)obj);
                 }
             }
 
             EditorGUI.showMixedValue = false;
         }
-        private static void SetupMaterialWithBlendMode (Material material, BlendMode blendMode) {
-            switch (blendMode) {
+        private static void SetupMaterialWithBlendMode(Material material, BlendMode blendMode)
+        {
+            switch (blendMode)
+            {
                 case BlendMode.Opaque:
-                    material.SetOverrideTag ("RenderType", "");
-                    material.SetInt ("_SrcFactor", (int) UnityEngine.Rendering.BlendMode.One);
-                    material.SetInt ("_DstFactor", (int) UnityEngine.Rendering.BlendMode.Zero);
-                    material.SetInt ("_AlphaToMask", 0);
-                    material.SetInt ("_ZWrite", 1);
-                    material.DisableKeyword ("_ALPHATEST_ON");
-                    if (material.renderQueue == (int) UnityEngine.Rendering.RenderQueue.Geometry || material.renderQueue == (int) UnityEngine.Rendering.RenderQueue.AlphaTest || material.renderQueue == (int) UnityEngine.Rendering.RenderQueue.Transparent) {
-                        material.renderQueue = (int) UnityEngine.Rendering.RenderQueue.Geometry;
+                    material.SetOverrideTag("RenderType", "");
+                    material.SetInt("_SrcFactor", (int)UnityEngine.Rendering.BlendMode.One);
+                    material.SetInt("_DstFactor", (int)UnityEngine.Rendering.BlendMode.Zero);
+                    material.SetInt("_AlphaToMask", 0);
+                    material.SetInt("_ZWrite", 1);
+                    material.DisableKeyword("_ALPHATEST_ON");
+                    if (material.renderQueue == (int)UnityEngine.Rendering.RenderQueue.Geometry || material.renderQueue == (int)UnityEngine.Rendering.RenderQueue.AlphaTest || material.renderQueue == (int)UnityEngine.Rendering.RenderQueue.Transparent)
+                    {
+                        material.renderQueue = (int)UnityEngine.Rendering.RenderQueue.Geometry;
                     }
                     break;
                 case BlendMode.Cutout:
-                    material.SetOverrideTag ("RenderType", "TransparentCutout");
-                    material.SetInt ("_SrcFactor", (int) UnityEngine.Rendering.BlendMode.One);
-                    material.SetInt ("_DstFactor", (int) UnityEngine.Rendering.BlendMode.Zero);
-                    material.SetInt ("_ZWrite", 1);
-                    material.SetInt ("_AlphaToMask", 1);
-                    material.EnableKeyword ("_ALPHATEST_ON");
-                    if (material.renderQueue == (int) UnityEngine.Rendering.RenderQueue.Geometry || material.renderQueue == (int) UnityEngine.Rendering.RenderQueue.AlphaTest || material.renderQueue == (int) UnityEngine.Rendering.RenderQueue.Transparent) {
-                        material.renderQueue = (int) UnityEngine.Rendering.RenderQueue.AlphaTest;
+                    material.SetOverrideTag("RenderType", "TransparentCutout");
+                    material.SetInt("_SrcFactor", (int)UnityEngine.Rendering.BlendMode.One);
+                    material.SetInt("_DstFactor", (int)UnityEngine.Rendering.BlendMode.Zero);
+                    material.SetInt("_ZWrite", 1);
+                    material.SetInt("_AlphaToMask", 1);
+                    material.EnableKeyword("_ALPHATEST_ON");
+                    if (material.renderQueue == (int)UnityEngine.Rendering.RenderQueue.Geometry || material.renderQueue == (int)UnityEngine.Rendering.RenderQueue.AlphaTest || material.renderQueue == (int)UnityEngine.Rendering.RenderQueue.Transparent)
+                    {
+                        material.renderQueue = (int)UnityEngine.Rendering.RenderQueue.AlphaTest;
                     }
                     break;
                 case BlendMode.Transparent:
-                    material.SetOverrideTag ("RenderType", "Transparent");
-                    material.SetInt ("_SrcFactor", (int) UnityEngine.Rendering.BlendMode.SrcAlpha);
-                    material.SetInt ("_DstFactor", (int) UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
-                    material.SetInt ("_ZWrite", 0);
-                    material.SetInt ("_AlphaToMask", 0);
-                    material.DisableKeyword ("_ALPHATEST_ON");
-                    if (material.renderQueue == (int) UnityEngine.Rendering.RenderQueue.Geometry || material.renderQueue == (int) UnityEngine.Rendering.RenderQueue.AlphaTest || material.renderQueue == (int) UnityEngine.Rendering.RenderQueue.Transparent) {
-                        material.renderQueue = (int) UnityEngine.Rendering.RenderQueue.Transparent;
+                    material.SetOverrideTag("RenderType", "Transparent");
+                    material.SetInt("_SrcFactor", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
+                    material.SetInt("_DstFactor", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
+                    material.SetInt("_ZWrite", 0);
+                    material.SetInt("_AlphaToMask", 0);
+                    material.DisableKeyword("_ALPHATEST_ON");
+                    if (material.renderQueue == (int)UnityEngine.Rendering.RenderQueue.Geometry || material.renderQueue == (int)UnityEngine.Rendering.RenderQueue.AlphaTest || material.renderQueue == (int)UnityEngine.Rendering.RenderQueue.Transparent)
+                    {
+                        material.renderQueue = (int)UnityEngine.Rendering.RenderQueue.Transparent;
                     }
                     break;
             }
         }
-        private void MaterialChanged (Material material) {
-            BlendMode mode = (BlendMode) material.GetFloat ("_BlendMode");
+        private void MaterialChanged(Material material)
+        {
+            BlendMode mode = (BlendMode)material.GetFloat("_BlendMode");
             __alphaOption = mode == BlendMode.Cutout;
-            SetupMaterialWithBlendMode (material, mode);
+            SetupMaterialWithBlendMode(material, mode);
         }
     }
 }

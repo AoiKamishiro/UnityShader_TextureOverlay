@@ -13,7 +13,7 @@ using UnityEditor;
 using UnityEditor.Callbacks;
 using UnityEngine;
 using UnityEngine.Networking;
-namespace AKSTextureOverlay
+namespace Kamishiro.UnityShader.TextureOverlay
 {
     public class AKSManager : MonoBehaviour
     {

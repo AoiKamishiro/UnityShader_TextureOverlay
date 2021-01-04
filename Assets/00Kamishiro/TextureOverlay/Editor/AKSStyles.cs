@@ -11,7 +11,7 @@
 
 using UnityEditor;
 using UnityEngine;
-namespace AKSTextureOverlay
+namespace Kamishiro.UnityShader.TextureOverlay
 {
     public class AKSStyles : MonoBehaviour
     {
